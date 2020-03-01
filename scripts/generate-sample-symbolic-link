@@ -1,4 +1,9 @@
 #!/bin/bash
 
-ln -sf ../source_dir/ ./example/dest_dir
-ln -sf ../../source_dir/ ./example/dest_dir/ignored_dir
+# Do not use ln -f option, because `ln -lf` cannot overwrite directory.
+
+rm -rf ./example/dest_dir/source_dir
+rm -rf ./example/dest_dir/ignored_dir/source_dir
+
+ln -s ../source_dir/ ./example/dest_dir
+ln -s ../../source_dir/ ./example/dest_dir/ignored_dir
