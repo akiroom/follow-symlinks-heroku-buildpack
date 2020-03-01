@@ -6,6 +6,25 @@ Convert symlinks to copied actual/real/source files.
   - If set it, follow only files in PROJECT_PATH.
 - Ignore files written in `.gitignore` by using `git ls-files`.
 
+## Purpose
+
+- [timanovsky/subdir-heroku-buildpack](https://github.com/timanovsky/subdir-heroku-buildpack) is good to point a sub project directory to Heroku.
+- But `timanovsky/subdir-heroku-buildpack` has following specs:
+  - It copies only pointed directory.
+  - It cannot follow symbolic links pointed to outside of sub project directory.
+- These specs causes the problem that you cannot use symbolic links to refer siblings directories.
+  - For example, you cannot deploy `constants.js` when treat these files:
+  - `project_dir/`
+    - `shared/`
+      - `constants.js`
+    - `frontend/`
+      - `constants.js`   -> ../shared/constants.js [symlink]
+      - `index.js`
+    - `backend/`
+      - `constants.js` -> ../shared/constants.js [symlink]
+      - `index.js`
+- So you need to use `follow-symlinks-heroku-buildpack` to follow symbolic link.
+
 ## How to use it
 
 1. heroku buildpacks:clear if necessary
