@@ -5,6 +5,22 @@ BUILD_DIR=${1:-}
 CACHE_DIR=${2:-}
 ENV_DIR=${3:-}
 
+START_MESSAGE="-----> Convert symlinks to actual files buildpack"
+
+if [ -f $ENV_DIR/PROJECT_PATH ]; then
+	PROJECT_PATH=`cat $ENV_DIR/PROJECT_PATH`
+	if [ -d $BUILD_DIR/$PROJECT_PATH ]; then
+	  echo "$START_MESSAGE in $PROJECT_PATH"
+	  cd $BUILD_DIR/$PROJECT_PATH
+  else
+    echo $START_MESSAGE
+    cd $BUILD_DIR
+  fi
+else
+  echo $START_MESSAGE
+  cd $BUILD_DIR
+fi
+
 SYMBOLIC_LINKS=$(git ls-files | xargs -IXXX find XXX -type l)
 echo $SYMBOLIC_LINKS
 
@@ -15,7 +31,6 @@ for f in $SYMBOLIC_LINKS; do
   echo $SRC
   echo $DEST
   cp -r ${SRC} ${DEST}
-#  cp -f `readlink ${f}` ${f}
 done
 
 exit 0
