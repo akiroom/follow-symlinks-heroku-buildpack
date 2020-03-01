@@ -6,7 +6,7 @@ Convert symlinks to copied actual/real/source files.
   - If set it, follow only files in PROJECT_PATH.
 - Ignore files written in `.gitignore` by using `git ls-files`.
 
-## Purpose
+## Why
 
 - [timanovsky/subdir-heroku-buildpack](https://github.com/timanovsky/subdir-heroku-buildpack) is good to point a sub project directory to Heroku.
 - But `timanovsky/subdir-heroku-buildpack` has following specs:
