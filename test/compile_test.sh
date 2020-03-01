@@ -10,7 +10,7 @@ cd ${BUILDPACK_HOME}
 testPrepared () {
   SOURCE_DIR=./example/source_dir
   DEST_SYM_LINK=./example/dest_dir/source_dir
-  IGNORE_SYM_LINK=./example/ignored_dir/source_dir
+  IGNORE_SYM_LINK=./example/dest_dir/ignored_dir/source_dir
 
   # -L option requires symbolic link
   assertTrue "Should have directory ${SOURCE_DIR}" "[ -d ${SOURCE_DIR} ]"
