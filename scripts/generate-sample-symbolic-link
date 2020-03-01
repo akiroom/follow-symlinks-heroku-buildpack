@@ -5,5 +5,7 @@
 rm -rf ./example/dest_dir/source_dir
 rm -rf ./example/dest_dir/ignored_dir/source_dir
 
+
 ln -s ../source_dir/ ./example/dest_dir
+mkdir -p ./example/dest_dir/ignored_dir
 ln -s ../../source_dir/ ./example/dest_dir/ignored_dir
