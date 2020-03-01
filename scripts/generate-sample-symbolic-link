@@ -1,0 +1,4 @@
+#!/bin/bash
+
+ln -sf ../source_dir/ ./example/dest_dir
+ln -sf ../../source_dir/ ./example/dest_dir/ignored_dir

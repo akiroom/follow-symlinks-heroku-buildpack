@@ -5,4 +5,7 @@ BUILD_DIR=${1:-}
 CACHE_DIR=${2:-}
 ENV_DIR=${3:-}
 
+SYMBOLIC_LINKS=$(git ls-files | xargs -IXXX find XXX -type l)
+echo $SYMBOLIC_LINKS
+
 exit 0
