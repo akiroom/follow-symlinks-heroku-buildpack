@@ -4,6 +4,7 @@
 
 #./scripts/generate-sample-symbolic-link
 echo $(pwd)
+echo $(ls -la)
 
 testPrepared () {
   assertEquals "" ""
