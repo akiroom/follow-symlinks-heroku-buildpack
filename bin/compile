@@ -7,19 +7,33 @@ ENV_DIR=${3:-}
 
 START_MESSAGE="-----> Follow symlinks to actual files buildpack"
 
+IS_CHANGED=false
+
 if [ -f $ENV_DIR/PROJECT_PATH ]; then
 	PROJECT_PATH=`cat $ENV_DIR/PROJECT_PATH`
 	if [ -d $BUILD_DIR/$PROJECT_PATH ]; then
 	  echo "$START_MESSAGE in $PROJECT_PATH"
 	  cd $BUILD_DIR/$PROJECT_PATH
-  else
+	  IS_CHANGED=true
+  fi
+fi
+
+if [ ! $IS_CHANGED ]; then
+  if [ -f $BUILD_DIR ]; then
     echo $START_MESSAGE
     cd $BUILD_DIR
+	  IS_CHANGED=true
   fi
-else
-  echo $START_MESSAGE
-  cd $BUILD_DIR
 fi
+
+if [ ! $IS_CHANGED ]; then
+  echo "$START_MESSAGE in current direcotry: $(pwd)"
+fi
+
+# Initialize git repos for `git ls-files` command.
+# These are idempotence.
+git init
+git add .
 
 SYMBOLIC_LINKS=$(git ls-files | xargs -IXXX find XXX -type l)
 echo $SYMBOLIC_LINKS
