@@ -4,4 +4,6 @@
 
 #./scripts/generate-sample-symbolic-link
 
-assertEquals "" ""
+testPrepared () {
+  assertEquals "" ""
+}
