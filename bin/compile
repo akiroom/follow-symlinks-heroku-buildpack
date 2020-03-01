@@ -5,7 +5,7 @@ BUILD_DIR=${1:-}
 CACHE_DIR=${2:-}
 ENV_DIR=${3:-}
 
-START_MESSAGE="-----> Convert symlinks to actual files buildpack"
+START_MESSAGE="-----> Follow symlinks to actual files buildpack"
 
 if [ -f $ENV_DIR/PROJECT_PATH ]; then
 	PROJECT_PATH=`cat $ENV_DIR/PROJECT_PATH`
