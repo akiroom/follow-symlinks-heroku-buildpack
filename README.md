@@ -25,7 +25,8 @@ Convert symlinks to copied actual/real/source files.
 
 ## Development
 
-- Edit bin/compile
+- See [Buildpack API | Heroku Dev Center](https://devcenter.heroku.com/articles/buildpack-api)
+- `bin/compile` is main script.
 
 ## Test
 
