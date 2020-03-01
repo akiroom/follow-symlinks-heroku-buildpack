@@ -39,8 +39,10 @@ SYMBOLIC_LINKS=$(git ls-files | xargs -IXXX find XXX -type l)
 echo $SYMBOLIC_LINKS
 
 for f in $SYMBOLIC_LINKS; do
+  # XXX: you can use ./scripts/greadlink insteadof `readlink -f` if on macOS.
+  SRC=$(readlink -f ${f})
   DEST=$(echo ${f})
-  SRC=$(./scripts/greadlink ${f})
+
   unlink ${DEST}
   echo $SRC
   echo $DEST
