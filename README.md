@@ -5,5 +5,5 @@
 See https://github.com/heroku/heroku-buildpack-testrunner
 
 ```sh
-$ git push heroku master
+$ git push heroku master && heroku run tests
 ```
