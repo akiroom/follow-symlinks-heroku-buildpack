@@ -4,10 +4,12 @@
 
 cd ${BUILDPACK_HOME}
 ./scripts/generate-sample-symbolic-link
-echo $(pwd)
-echo $(ls -la)
+#echo $(pwd)
+#echo $(ls -la)
 
 testPrepared () {
   SOURCE_DIR=./example/source_dir
-  assertTrue "Should have symbolic link ${SOURCE_DIR}" "[ -f ${SOURCE_DIR} ]"
+
+  # -L option requires symbolic link
+  assertTrue "Should have symbolic link ${SOURCE_DIR}" "[ -L ${SOURCE_DIR} ]"
 }
