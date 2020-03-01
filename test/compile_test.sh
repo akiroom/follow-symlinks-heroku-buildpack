@@ -7,5 +7,6 @@ echo $(pwd)
 echo $(ls -la)
 
 testPrepared () {
-  assertEquals "" ""
+  SOURCE_DIR=${BUILDPACK_HOME}/example/source_dir
+  assertTrue "Should have symbolic link ${SOURCE_DIR}`" "[ -f ${SOURCE_DIR} ]"
 }
